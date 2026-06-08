@@ -64,7 +64,7 @@ async function loadPosts() {
     }
     wrap.innerHTML = posts.map(p => `
       <div class="dash-post-item">
-        <a href="/post.html?id=${encodeURIComponent(p.id)}" class="dash-post-title" target="_blank" rel="noopener">
+        <a href="/post?id=${encodeURIComponent(p.id)}" class="dash-post-title" target="_blank" rel="noopener">
           ${escapeHtml(p.title)}
         </a>
         <span class="dash-post-date">${escapeHtml(formatDate(p.date))}</span>
@@ -162,12 +162,9 @@ window.handleGoogleSignIn = async function(response) {
       setToken(token);
       showDashboard();
     } else {
-      const body = await res.json().catch(() => ({}));
-      errorEl.textContent = JSON.stringify(body);
       errorEl.style.display = 'block';
     }
-  } catch (err) {
-    errorEl.textContent = err.message;
+  } catch {
     errorEl.style.display = 'block';
   }
 };

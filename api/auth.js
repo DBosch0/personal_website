@@ -24,19 +24,11 @@ module.exports = async function handler(req, res) {
   }
 
   if (payload.aud !== process.env.GOOGLE_CLIENT_ID) {
-    return res.status(401).json({
-      error: 'Invalid token audience',
-      got: payload.aud,
-      expected: process.env.GOOGLE_CLIENT_ID || '(GOOGLE_CLIENT_ID not set)',
-    });
+    return res.status(401).json({ error: 'Invalid token audience' });
   }
 
   if (!payload.email || payload.email !== process.env.ADMIN_EMAIL) {
-    return res.status(403).json({
-      error: 'Unauthorized',
-      got: payload.email || '(no email in token)',
-      expected: process.env.ADMIN_EMAIL || '(ADMIN_EMAIL not set)',
-    });
+    return res.status(403).json({ error: 'Unauthorized' });
   }
 
   const token = randomBytes(32).toString('hex');

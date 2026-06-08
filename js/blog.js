@@ -21,7 +21,7 @@ async function loadPosts() {
       return;
     }
     container.innerHTML = posts.map(p => `
-      <a href="/post.html?id=${encodeURIComponent(p.id)}" class="post-card">
+      <a href="/post?id=${encodeURIComponent(p.id)}" class="post-card">
         <span class="post-date">${escapeHtml(formatDate(p.date))}</span>
         <h3>${escapeHtml(p.title)}</h3>
         ${p.excerpt ? `<p>${escapeHtml(p.excerpt)}</p>` : ''}

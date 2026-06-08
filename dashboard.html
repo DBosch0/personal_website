@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — David Bosch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <nav>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/blog.html">Blog</a>
+    </div>
+  </nav>
+
+  <!-- LOGIN STATE -->
+  <div id="login-section" class="login-wrap">
+    <div class="login-card">
+      <!-- <h2>Dashboard</h2>
+      <p>Sign in to continue.</p> -->
+      <div id="g_id_onload"
+        data-client_id="782319583987-2ic1geu2m31dhlm7gplr5mr7tppp4jkp.apps.googleusercontent.com"
+        data-callback="handleGoogleSignIn"
+        data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+        data-type="standard"
+        data-theme="filled_black"
+        data-size="large"
+        data-text="signin_with"
+        data-shape="rectangular"
+        data-logo_alignment="left">
+      </div>
+      <div id="login-error" class="error-msg" style="margin-top: 0.75rem">Sign-in failed — make sure you're using the right Google account.</div>
+    </div>
+  </div>
+
+  <!-- DASHBOARD STATE (hidden until authenticated) -->
+  <main id="dashboard-section" style="display: none">
+    <div class="dashboard-content">
+
+      <div class="dashboard-header">
+        <h1>Dashboard</h1>
+        <button id="logout-btn" class="btn btn-ghost btn-sm">Log out</button>
+      </div>
+
+      <!-- PAGE VIEWS -->
+      <div class="dash-section">
+        <div class="dash-section-title">Page Views</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Page</th><th>Views</th></tr>
+            </thead>
+            <tbody id="views-tbody">
+              <tr><td colspan="2" style="color: var(--text-subtle); font-size: 0.875rem;">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- POSTS LIST -->
+      <div class="dash-section">
+        <div class="dash-section-title">Blog Posts</div>
+        <div class="table-wrap" id="posts-wrap">
+          <p style="padding: 1rem 0.875rem; color: var(--text-subtle); font-size: 0.875rem;">Loading…</p>
+        </div>
+      </div>
+
+      <!-- ADD POST -->
+      <div class="dash-section">
+        <div class="add-post-form">
+          <h3>New Post</h3>
+          <form id="add-post-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="post-title">Title</label>
+                <input type="text" id="post-title" placeholder="Post title" required>
+              </div>
+              <div class="form-group">
+                <label for="post-excerpt">Excerpt</label>
+                <input type="text" id="post-excerpt" placeholder="Short summary (optional)">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="post-content">Content (Markdown)</label>
+              <textarea id="post-content" rows="12" placeholder="Write in Markdown…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: auto; min-width: 120px" id="publish-btn">
+              Publish
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="https://accounts.google.com/gsi/client" async></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

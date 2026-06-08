@@ -1,7 +1,7 @@
 (() => {
   const BOID_COUNT = 200;
-  const MAX_SPEED = 3.5;
-  const MIN_SPEED = 1.0;
+  const MAX_SPEED = 2.5;
+  const MIN_SPEED = 0.8;
   const PERCEPTION = 80;
   const SEPARATION_DIST = 25;
   const COLOR = '#262626';
